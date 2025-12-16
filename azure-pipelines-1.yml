@@ -25,9 +25,11 @@ steps:
   inputs:
     Contents: '**/*.war'
     TargetFolder: '$(build.artifactstagingdirectory)'
+- script: mv $(Build.ArtifactStagingDirectory)/*.war $(Build.ArtifactStagingDirectory)/ROOT.war
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'warfile'
     publishLocation: 'Container'
+
